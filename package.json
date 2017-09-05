@@ -1,14 +1,15 @@
 {
   "name": "jcvalerio-sw-names",
-  "version": "1.1.0",
+  "version": "0.0.0-development",
   "description": "Get random Star Wars names",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha src/index.test.js -w",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jcvalerio/sw-names.git"
+    "url": "https://github.com/jcvalerio/sw-names.git"
   },
   "keywords": [
     "randon",
@@ -25,7 +26,11 @@
     "unique-random-array": "1.0.0"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "2.0.0"
+    "chai": "4.1.2",
+    "commitizen": "2.9.6",
+    "cz-conventional-changelog": "2.0.0",
+    "mocha": "3.5.0",
+    "semantic-release": "^7.0.2"
   },
   "config": {
     "commitizen": {
