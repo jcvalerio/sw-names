@@ -4,8 +4,12 @@
   "description": "Get random Star Wars names",
   "main": "src/index.js",
   "scripts": {
+    "precommit": "npm run test:single && npm run check-coverage",
+    "prepush": "npm run test:single",
+    "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "report-coverage": "cat ./coverage/lcov.info | codecov",
     "test": "mocha src/index.test.js -w",
-    "test:single": "mocha src/index.test.js",
+    "test:single": "istanbul cover -x *.test.js _mocha -- -R spec src/index.test.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -28,8 +32,11 @@
   },
   "devDependencies": {
     "chai": "4.1.2",
+    "codecov.io": "0.1.6",
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.0.0",
+    "husky": "0.14.3",
+    "istanbul": "0.4.5",
     "mocha": "3.5.0",
     "semantic-release": "^7.0.2"
   },
@@ -37,5 +44,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "czConfig": {
+    "path": "./node_modules/cz-conventional-changelog"
   }
 }
